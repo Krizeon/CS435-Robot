@@ -1,6 +1,7 @@
 from machine import Pin
 from machine import I2C
 from DCMotors import *
+from get_distance import *
 
 MAX_SPEED = 4095 #max speed that can be sent to the motors over PWM
 LEFT_MOTOR = 0 #index that corresponds to the left motor on the board
@@ -73,3 +74,15 @@ def brake(motor=MOTOR):
     motor.brake(1)
     motor.brake(2)
     motor.brake(3)
+
+def autonomous_drive(motor=MOTOR):
+    while True:
+        distance = get_distance()
+        while distance > 100 and distance != 0:
+            forward(50)
+            utime.sleep_ms(25)
+            distance = get_distance()
+        backward(50)
+        utime.sleep_ms(500)
+        right(50)
+        utime.sleep_ms((2000))

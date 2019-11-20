@@ -27,6 +27,8 @@ def web_page():
         direction_string = "RIGHT"
     elif robot_direction == 100:
         direction_string = "STOPPED"
+    elif robot_direction == 4:
+        direction_string = "AUTONOMOUS"
 
     # This is the page content
     html = """<html>
@@ -53,6 +55,7 @@ def web_page():
              <a href="/right"><button class="button2">RIGHT</button></a></p>
              <p><a href="/backwards"><button class="button2">BACKWARDS</button></a></p>
              <p><a href="/stopped"><button class="button2">STOPPED</button></a></p>
+             <p><a href="/autonomous"><button class="button2">AUTONOMOUS</button></a></p>
              <p></p>
              <p></p>
             </body>
@@ -105,6 +108,10 @@ while True:
                 print("STOPPED")
                 robot_direction = 100
                 brake()
+            elif url[1] == b'autonomous':
+                print("AUTONOMOUS")
+                robot_direction = 4
+                autonomous_drive()
 
     # Send back the dynamic response
     response = web_page()
