@@ -1,5 +1,5 @@
 from machine import Pin, UART
-from time import sleep_ms
+import utime
 
 def get_distance():
 
@@ -16,7 +16,7 @@ def get_distance():
     uart.write(write_buf)
     
     # when no sleep, found that it would return 0 - possibly due to speed of sonar?
-    sleep_ms(20)
+    utime.sleep_ms(20)
     
     # read 2 bytes returned from UART, MSB first
     uart.readinto(read_buf)
