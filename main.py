@@ -1,88 +1,114 @@
-from machine import Pin
-from machine import I2C
-from DCMotors import *
-import utime
+# webpage_controller.py
 
-MAX_SPEED = 4095 #max speed that can be sent to the motors over PWM
-LEFT_MOTOR = 2 #index that corresponds to the left motor on the board
-RIGHT_MOTOR = 3 #index that corresponds to the right motor on the board
-SCL = Pin(22, Pin.OUT) #scl pin on the ESP32 for I2C comm
-SDA = Pin(23, Pin.OUT) #sda pin on the ESP32 for I2C comm
-LED = Pin(13, Pin.OUT) #the red LED pin on the Feather board
+import usocket as us
+from motorcontrols import *
 
-#setup code
-i2c = I2C(scl=SCL, sda=SDA)  # create I2C peripheral at frequency of 400kHz
-i2c.init(scl=SCL, sda=SDA)
-MOTOR = DCMotors(i2c)  # Motor object
+robot_direction = 100
+brake()
+# Configure the socket
+s = us.socket(us.AF_INET, us.SOCK_STREAM)
+# Listen to incoming connections on port 80 and respons at most at 1 conenction at a time
+s.bind(('', 80))
+s.listen(1)
 
-def convert_speed_to_percent(percent):
+
+def web_page():
     """
-    :param percent: percentage of speed of motors, 1 - 100
-    :return: a speed between 0 - 4095 for the DCMotors functions to understand
+    Will return a web page with dynamic information about the LED status
     """
-    speed = MAX_SPEED // 100
-    simple_speed = speed * percent
-    return simple_speed
 
-def forward(speed, motor=MOTOR):
-    """
-    :param speed: a speed between 0 to 100
-    :param motor: a DCMotor object
-    :return: N/A (motors driving forward)
-    """
-    motor_speed = convert_speed_to_percent(speed)
-    motor.speed(LEFT_MOTOR, (-1 * motor_speed))
-    motor.speed(RIGHT_MOTOR, (-1 * motor_speed)) #flip the direction of the right motor
+    if robot_direction == 0:
+        direction_string = "FORWARD"
+    elif robot_direction == 1:
+        direction_string = "BACKWARDS"
+    elif robot_direction == 2:
+        direction_string = "LEFT"
+    elif robot_direction == 3:
+        direction_string = "RIGHT"
+    elif robot_direction == 100:
+        direction_string = "STOPPED"
 
-def backward(speed, motor=MOTOR):
-    """
-    :param speed: a speed between 0 to 100
-    :param motor: a DCMotor object
-    :return: N/A (motors driving forward)
-    """
-    motor_speed = convert_speed_to_percent(speed)
-    motor.speed(LEFT_MOTOR, (1 * motor_speed))
-    motor.speed(RIGHT_MOTOR, (1 * motor_speed))  # flip the direction of the right motor
+    # This is the page content
+    html = """<html>
+             <head>
+              <title>ESP32 Web Server</title>
+              <meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="icon" href="data:,">
+              <style>
+               html{font-family: Helvetica; display:inline-block; margin: 0px auto; text-align: center;}
+               h1{color: #0F3376; padding: 2vh;}p{font-size: 1.5rem;}
+               .button{display: inline-block; background-color: #FF6A00; border: none; border-radius: 4px;
+                       color: white; padding: 16px 40px; text-decoration: none; font-size: 30px; margin: 2px; cursor: pointer;}
+               .button2{display: inline-block; background-color: #4CFF00; border: none; border-radius: 4px;
+                        color: white; padding: 16px 30px; text-decoration: none; font-size: 30px; margin: 2px; cursor: pointer;}
+              </style>
+            </head>
+            <body>
+             <h1>ROBOT CONTROLS</h1>
+             <div class="slidecontainer">
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+             </div>
+             <p>Robot direction: <strong>""" + direction_string + """</strong></p>
+             <p><a href="/forward"><button class="button2">FORWARD</button></a></p>
+             <p><a href="/left"><button class="button2">LEFT</button></a>
+             <a href="/right"><button class="button2">RIGHT</button></a></p>
+             <p><a href="/backwards"><button class="button2">BACKWARDS</button></a></p>
+             <p><a href="/stopped"><button class="button2">STOPPED</button></a></p>
+             <p></p>
+             <p></p>
+            </body>
+           </html>"""
 
-def right(speed, motor=MOTOR):
-    """
-    :param speed: a speed between 0 to 100
-    :param motor: a DCMotor object
-    :return: N/A (motors driving forward)
-    """
-    motor_speed = convert_speed_to_percent(speed)
-    motor.speed(LEFT_MOTOR, (-1 * motor_speed))
-    motor.speed(RIGHT_MOTOR, (1 * motor_speed))
+    return html
 
+# Loop forever
+while True:
+    # Accept incoming connections
+    cl, addr = s.accept()
+    print('Got a connection from %s' % str(addr))
 
-def left(speed, motor=MOTOR):
-    """
-    :param speed: a speed between 0 to 100
-    :param motor: a DCMotor object
-    :return: N/A (motors driving forward)
-    """
-    motor_speed = convert_speed_to_percent(speed)
-    motor.speed(LEFT_MOTOR, (1 * motor_speed))
-    motor.speed(RIGHT_MOTOR, (-1 * motor_speed))
+    # Handle the socket as if it was a binary file, allows us to use readline()
+    cl_file = cl.makefile('rwb', 0)
+    while True:
+        line = cl.readline()
 
-def brake(motor=MOTOR):
-    """
-    :param motor: a DCMotor object
-    :return: n/a
-    """
-    motor.brake(0)
-    motor.brake(1)
-    motor.brake(2)
-    motor.brake(3)
+        # If no line or empty line, we are done
+        # A GET request will end with an empty line after the header
+        # A POST request will have an empty line between the header and the body
+        if not line or line == b'\r\n':
+            break
 
-if __name__ == '__main__':
+        # Let's look for GET methods: they want some data from our server
+        if line.startswith(b'GET '):
+            # Brake it apart using spaces (separated GET from the following URL)
+            # and then break the URL in part based on '/'
+            # How the URL looks like will depend on your API
+            url = line.split(b' ')[1].split(b'/')
 
+            # do stuff depending on what button was pressed
+            if url[1] == b'forward':
+                print("FORWARD")
+                robot_direction = 0
+                forward(50)
+            elif url[1] == b'backwards':
+                print("BACKWARDS")
+                robot_direction = 1
+                backward(50)
+            elif url[1] == b'left':
+                print("LEFT")
+                robot_direction = 2
+                left(50)
+            elif url[1] == b'right':
+                print("RIGHT")
+                robot_direction = 3
+                right(50)
+            elif url[1] == b'stopped':
+                print("STOPPED")
+                robot_direction = 100
+                brake()
 
-    #Motors are connected to index 2 and 3 (M3 and M4)
+    # Send back the dynamic response
+    response = web_page()
+    cl.send(response)
 
-    for i in range(5):
-        forward(50)
-        utime.sleep_ms(500)
-        backward(50)
-        utime.sleep_ms(500)
-        (brake)
+    # Close the connection
+    cl.close()
