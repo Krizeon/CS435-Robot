@@ -2,6 +2,7 @@
 
 import usocket as us
 from motorcontrols import *
+import _thread
 
 robot_direction = 100
 brake()
@@ -16,6 +17,7 @@ def web_page():
     """
     Will return a web page with dynamic information about the LED status
     """
+    global robot_direction
 
     if robot_direction == 0:
         direction_string = "FORWARD"
@@ -46,9 +48,6 @@ def web_page():
             </head>
             <body>
              <h1>ROBOT CONTROLS</h1>
-             <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-             </div>
              <p>Robot direction: <strong>""" + direction_string + """</strong></p>
              <p><a href="/forward"><button class="button2">FORWARD</button></a></p>
              <p><a href="/left"><button class="button2">LEFT</button></a>
@@ -82,6 +81,7 @@ while True:
 
         # Let's look for GET methods: they want some data from our server
         if line.startswith(b'GET '):
+            print(line)
             # Brake it apart using spaces (separated GET from the following URL)
             # and then break the URL in part based on '/'
             # How the URL looks like will depend on your API
@@ -111,7 +111,7 @@ while True:
             elif url[1] == b'autonomous':
                 print("AUTONOMOUS")
                 robot_direction = 4
-                autonomous_drive()
+                _thread.start_new_thread(autonomous_drive, ())
 
     # Send back the dynamic response
     response = web_page()
