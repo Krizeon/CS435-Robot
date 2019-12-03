@@ -48,9 +48,6 @@ def web_page():
             </head>
             <body>
              <h1>ROBOT CONTROLS</h1>
-             <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-             </div>
              <p>Robot direction: <strong>""" + direction_string + """</strong></p>
              <p><a href="/forward"><button class="button2">FORWARD</button></a></p>
              <p><a href="/left"><button class="button2">LEFT</button></a>
