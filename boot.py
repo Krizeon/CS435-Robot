@@ -42,7 +42,7 @@ def setup():
     # You can (and should) change the IP address to avoid conflict with others
     #
     # ap_if.ifconfig((IP, subnet_mask, gateway, dns))
-    ap_if.ifconfig(('4.3.5.2', '255.255.255.0', '4.3.5.2', '4.3.5.2'))
+    ap_if.ifconfig(('4.3.5.5', '255.255.255.0', '4.3.5.5', '4.3.5.5'))
     #
     # IP          is your desired IP address (we could use 4.3.5.host) where host is a number between 1-254
     # subnet_mask is used to split the IP range. Typical value for us 255.255.255.0
