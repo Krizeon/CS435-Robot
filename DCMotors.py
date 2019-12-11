@@ -1,4 +1,9 @@
-""" from https://github.com/adafruit/micropython-adafruit-pca9685/"""
+"""
+from https://github.com/adafruit/micropython-adafruit-pca9685/ (unedited)
+Powers DC motors by giving a PWM signal over I2C to the onboard PCA9685 chip
+on the Featherwing board. The I2C address is 0x60. PWM signal is a 12-bit
+value (0-4095).
+"""
 
 from PCA9685 import *
 _DC_MOTORS = ((8, 9, 10), (13, 12, 11), (2, 3, 4), (7, 6, 5))
