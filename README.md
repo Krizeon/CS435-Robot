@@ -27,7 +27,7 @@ Once we got these files compatible and all wires were connected and soldered pro
 The task division fell into place naturally: Kevin wanted to design and build the robot parts, Dylan wanted to implement a wifi-communication system with the ESP32 and design a website with buttons for controlling the device. 
 
 
-###### Bill of Materials
+##### Bill of Materials
   * Adafruit Huzzah32: $19.95
   * US-100 Ultrasonic Distance Sensor: $6.95
   * DC Motor + Stepper FeatherWing: $21.50
@@ -35,7 +35,7 @@ The task division fell into place naturally: Kevin wanted to design and build th
   * Lithium Ion Polymer Battery 3.7v 1200m: $9.95
   * 4 x AA Battery Holder: $2.95
 
-Total Project Cost: $68.3
+##### Total Project Cost: $68.3
 
 
 
