@@ -1,13 +1,19 @@
-# webpage_controller.py
+# main.py
+
+# ESP32 will host a webpage accessible by connecting to its WiFi and maneuvering
+# to the IP address specified in boot.py. Webpage is used to control robot. 
 
 import usocket as us
 from motorcontrols import *
 import _thread
 
+# initial robot state is stopped/braking
 robot_direction = 100
 brake()
+
 # Configure the socket
 s = us.socket(us.AF_INET, us.SOCK_STREAM)
+
 # Listen to incoming connections on port 80 and respons at most at 1 conenction at a time
 s.bind(('', 80))
 s.listen(1)
@@ -15,10 +21,13 @@ s.listen(1)
 
 def web_page():
     """
-    Will return a web page with dynamic information about the LED status
+    returns a webpage with button controls for robot
     """
+    
+    # robot_direction variable used for updating HTML code to display robot's current status
     global robot_direction
 
+    # update robot's status on webpage
     if robot_direction == 0:
         direction_string = "FORWARD"
     elif robot_direction == 1:
@@ -32,7 +41,7 @@ def web_page():
     elif robot_direction == 4:
         direction_string = "AUTONOMOUS"
 
-    # This is the page content
+    # webpage code
     html = """<html>
              <head>
               <title>ESP32 Web Server</title>
@@ -62,7 +71,7 @@ def web_page():
 
     return html
 
-# Loop forever
+# loop forever
 while True:
     # Accept incoming connections
     cl, addr = s.accept()
@@ -70,6 +79,8 @@ while True:
 
     # Handle the socket as if it was a binary file, allows us to use readline()
     cl_file = cl.makefile('rwb', 0)
+    
+    # read through HTTP header file
     while True:
         line = cl.readline()
 
@@ -79,12 +90,10 @@ while True:
         if not line or line == b'\r\n':
             break
 
-        # Let's look for GET methods: they want some data from our server
+        # if line starts with Get, button was pressed and need to update robot state
         if line.startswith(b'GET '):
             print(line)
-            # Brake it apart using spaces (separated GET from the following URL)
-            # and then break the URL in part based on '/'
-            # How the URL looks like will depend on your API
+            # split header line to isolate page user moved to - that's the robot state to change to
             url = line.split(b' ')[1].split(b'/')
 
             # do stuff depending on what button was pressed
@@ -111,9 +120,11 @@ while True:
             elif url[1] == b'autonomous':
                 print("AUTONOMOUS")
                 robot_direction = 4
+                # in order to poll webpage for other buttons pressed, while havinging the 
+                # autonomous mode inside an infinite loop, have to multi thread
                 _thread.start_new_thread(autonomous_drive, ())
 
-    # Send back the dynamic response
+    # Send back the dynamic webpage response
     response = web_page()
     cl.send(response)
 
