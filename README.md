@@ -27,7 +27,11 @@ Once we got these files compatible and all wires were connected and soldered pro
 The task division fell into place naturally: Kevin wanted to design and build the robot parts, Dylan wanted to implement a wifi-communication system with the ESP32 and design a website with buttons for controlling the device. 
 
 
+# Results
+
 [![VIDEO](http://img.youtube.com/vi/MpUsSLf8D8k/0.jpg)](http://www.youtube.com/watch?v=MpUsSLf8D8k)
+Demonstration Video
+
 
 # Future Work
 Overall, we're very happy with how our project turned out! It was a fantastic experience having to go through the research, trial, and troubleshooting phases of building an embedded system project. However, some aspects of our project that we'd like to improve are the autonomous mode, turning, user interface, and robot construction. 
