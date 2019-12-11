@@ -35,7 +35,7 @@ The task division fell into place naturally: Kevin wanted to design and build th
   * Lithium Ion Polymer Battery 3.7v 1200m: $9.95
   * 4 x AA Battery Holder: $2.95
 
-##### Total Project Cost: $68.3
+##### Total Project Cost: $68.30
 
 
 
