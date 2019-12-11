@@ -1,6 +1,8 @@
 # boot.py
 
 # Intialize access point for hosting webpage for controlling robot
+# Adapted from http://acoptex.com/project/2789/basics-project-076e-esp32-development-board-micropython-web-server-at-acoptexcom/">http://acoptex.com/project/2789/basics-project-076e-esp32-development-board-micropython-web-server-at-acoptexcom/</a></p>
+
 
 import network
 import utime
