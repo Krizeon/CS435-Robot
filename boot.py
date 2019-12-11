@@ -1,12 +1,16 @@
+# boot.py
+
+# Intialize access point for hosting webpage for controlling robot
+
 import network
 import utime
 from machine import Pin, PWM
 
+
 def load_cred():
     """
-    Load credentials from file
-    No encryption, it is quite difficult to encrypt
-    in this scenario since the key has to be somewhere
+    Load credentials from unencrypted file
+    Contains the accesspoint name and password ESP32 will use
     """
     f = open('cred_ap.txt', 'r')
     c = f.readlines()
@@ -39,19 +43,9 @@ def setup():
     cred = load_cred()
     ap_if.config(essid=cred[0], password=cred[1], authmode=network.AUTH_WPA2_PSK)
 
-    # You can (and should) change the IP address to avoid conflict with others
-    #
+    # set IP address ESP32 will use to host webpage
     # ap_if.ifconfig((IP, subnet_mask, gateway, dns))
     ap_if.ifconfig(('4.3.5.5', '255.255.255.0', '4.3.5.5', '4.3.5.5'))
-    #
-    # IP          is your desired IP address (we could use 4.3.5.host) where host is a number between 1-254
-    # subnet_mask is used to split the IP range. Typical value for us 255.255.255.0
-    #             meaning that the first 3 bytes define the network and the last, the indivitual hosts
-    # gateway     is the address of the "router" connected to the web. In our case the ESP32 so it should be
-    #             the same as the IP
-    # dns         is the domain name service address. The computer that does the translation between hostnames
-    #             (www.google.com) and IP addresses (172.217.6.228). We don't have one so you can use the IP
-    #             address
 
     # Wait until connected
     while not ap_if.active():
