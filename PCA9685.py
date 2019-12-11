@@ -1,6 +1,11 @@
 """
 from https://github.com/adafruit/micropython-adafruit-pca9685/
-The file is slightly modified to use struct rather than ustruct
+The file is slightly modified to use struct rather than ustruct.
+Sets up communication with the onboard PCA9685 chip of the 
+Featherwing, which delivers a PWM signal to the connected motors.
+PWM signals are created in this file using the correct clock speeds,
+and prescales,  for the PCA9685. Communicates over I2C on address 
+0x40.
 """
 import utime
 import struct
