@@ -30,6 +30,7 @@ The task division fell into place naturally: Kevin wanted to design and build th
 # Results
 
 [![VIDEO](http://img.youtube.com/vi/MpUsSLf8D8k/0.jpg)](http://www.youtube.com/watch?v=MpUsSLf8D8k)
+
 Demonstration Video
 
 
