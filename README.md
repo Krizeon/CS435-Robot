@@ -39,7 +39,7 @@ The task division fell into place naturally: Kevin wanted to design and build th
 
 
 ### User Interface 
-[Webpage Interface](/web_interface.png)
+![Webpage Interface](/web_interface.png)
 
 
 
