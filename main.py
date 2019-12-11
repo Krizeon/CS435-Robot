@@ -2,6 +2,7 @@
 
 # ESP32 will host a webpage accessible by connecting to its WiFi and maneuvering
 # to the IP address specified in boot.py. Webpage is used to control robot. 
+# Adapted from http://acoptex.com/project/2789/basics-project-076e-esp32-development-board-micropython-web-server-at-acoptexcom/">http://acoptex.com/project/2789/basics-project-076e-esp32-development-board-micropython-web-server-at-acoptexcom/</a></p>
 
 import usocket as us
 from motorcontrols import *
