@@ -2,6 +2,9 @@ from machine import Pin, UART
 import utime
 
 def get_distance():
+""" 
+Gets and returns distance in cm from US-100 Ultra Sonice Distance Sensor
+"""
 
     # initalize uart instance
     uart = UART(1, 9600)
