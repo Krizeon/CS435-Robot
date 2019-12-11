@@ -27,6 +27,11 @@ Once we got these files compatible and all wires were connected and soldered pro
 The task division fell into place naturally: Kevin wanted to design and build the robot parts, Dylan wanted to implement a wifi-communication system with the ESP32 and design a website with buttons for controlling the device. 
 
 
+# Future Work
+Overall, we're very happy with how our project turned out! It was a fantastic experience having to go through the research, trial, and troublshooting phases of building a embedded system project. Howeber, some aspects of our project that we'd like to improve are the autonomous mode, user interface, and robot construction. 
+
+Autonomous Mode: Our current implementaiton of autonomous mode is pretty simplistic - it boils down to "go forward, and turn right if an obstacle appears in front of the robot." This was adequate for our project, as the focus of this build wans't the autonomous mode, but rather the wholstic creation and implementation of an embedded system. As it was, our autonomous mdoe worked to ensure that our various peripherals (motors, distance sensor) were working correciton, 
+
 
 # References
 https://www.geeksforgeeks.org/python-bytearray-function/
