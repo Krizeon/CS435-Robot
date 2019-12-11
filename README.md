@@ -25,3 +25,16 @@ Since we were already stretching ourselves thin with various extra tasks in the 
 Once we got these files compatible and all wires were connected and soldered properly, we created our own [motor controlling drivers](https://github.com/Krizeon/CS435-Robot/blob/master/motorcontrols.py) that calls the functions from motor.py to forward, backwards, turn left and turn right functions for our robot. These functions control motors that are connecte to the M1 and M2 channels of the Featherwing. 
 
 The task division fell into place naturally: Kevin wanted to design and build the robot parts, Dylan wanted to implement a wifi-communication system with the ESP32 and design a website with buttons for controlling the device. 
+
+
+
+# References
+https://www.geeksforgeeks.org/python-bytearray-function/
+https://forum.micropython.org/viewtopic.php?t=762
+https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2beta.html
+https://docs.micropython.org/en/latest/library/_thread.html
+https://github.com/loboris/MicroPython_ESP32_psRAM_LoBo/wiki/thread
+http://acoptex.com/project/2789/basics-project-076e-esp32-development-board-micropython-web-server-at-acoptexcom/#sthash.jI4TOzgE.dpbs
+https://github.com/Krizeon/CS435-Robot/blob/master/README.md
+https://www.sltrib.com/news/2019/08/19/yelling-siri-or-alexa/
+
