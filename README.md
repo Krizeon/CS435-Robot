@@ -33,6 +33,8 @@ Once we got these files compatible and all wires were connected and soldered pro
 ### User Interface 
 ![Webpage Interface](/images/web_interface.png)
 
+##### Webpage user interface
+
 One of the biggest goals for our project was to have a web interface to control our robot. We figured that this interactive user experience would make our robot much more enjoyable to play with, as opposed to pre-programming some sort of movement routine. Due to Middlebury College’s network restrictions, we were unable to implement the fully functional interface that we had originally envisioned (see the Future Work section), however our version gave us the base functionality that we had envisioned, and was a large part of the success of our robot. 
 
 Inspiration for our WiFi UI was derived from [this example](http://acoptex.com/project/2789/basics-project-076e-esp32-development-board-micropython-web-server-at-acoptexcom/#sthash.7EEX6CQ7.dpbs). Through use of micropython’ socket and network libraries, we were able to configure our ESP32 to function as a web server in our [boot.py file](https://github.com/Krizeon/CS435-Robot/blob/master/boot.py). Upon restarting or booting up, our ESP32 would automatically be set up to function as a web server, with the I.P. address specified in the file and network name and passwords for this server provided in [cred_ap.txt](https://github.com/Krizeon/CS435-Robot/blob/master/cred_ap.txt). 
@@ -46,7 +48,7 @@ Although this was not a complex autonomous mode, incorporating it into the rest 
 
 ![sonar picture](/images/sonar_picture.jpeg)
 
-Initial testing of distance sensor
+##### Initial testing of distance sensor
 
 ### Bill of Materials
 
@@ -108,7 +110,7 @@ At the start of our project, we started out with only our Huzzah32, distance sen
 
 ![build image](/images/build_test.jpeg)
 
-Initial built testing of distance sensor, battery, and battery pack placement on robot
+##### Initial built testing of distance sensor, battery, and battery pack placement on robot
 
 ### Multithreading
 It was both of our first times working with multiple threads, and we encountered several problems along the way due to our original single-thread minded code not being structured to handle multiple threads. However, After playing around with the _thread library and getting some experience under our belts, we were able to resolve these issues. 
