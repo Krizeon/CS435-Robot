@@ -33,18 +33,7 @@ Once we got these files compatible and all wires were connected and soldered pro
 The task division fell into place naturally: Kevin wanted to design and build the robot parts, Dylan wanted to implement a wifi-communication system with the ESP32 and design a website with buttons for controlling the device. 
 
 
-##### Bill of Materials
-  * Adafruit Huzzah32: $19.95
-  * US-100 Ultrasonic Distance Sensor: $6.95
-  * DC Motor + Stepper FeatherWing: $21.50
-  * DC Motor: $3.50 x 2 = $7.00
-  * Lithium Ion Polymer Battery 3.7v 1200m: $9.95
-  * 4 x AA Battery Holder: $2.95
-
-##### Total Project Cost: $68.30
-
-
-### User Interface 
+#### User Interface 
 ![Webpage Interface](/images/web_interface.png)
 
 One of the biggest goals for our project was to have a web interface to control our robot. We figured that this interactive user experience would make our robot much more enjoyable to play with, as opposed to pre-programming some sort of movement routine. Due to Middlebury College’s network restrictions, we were unable to implement the fully functional interface that we had originally envisioned (see the Future Work section), however our version gave us the base functionality that we had envisioned, and was a large part of the success of our robot. 
@@ -54,7 +43,7 @@ Inspiration for our WiFi UI was derived from [this example](http://acoptex.com/p
 In our [main.py file](https://github.com/Krizeon/CS435-Robot/blob/master/main.py), the primary program blocks while waiting for connections. Upon receiving a connection, it creates a socket to facilitate communication between the ESP32 and the client and sends raw HTML code (web interface) to the client. At this point, it’s important to give an overview of how our HTML code interfaced with the robot commands. As seen above, our web interface consists of multiple buttons designating different robot direction states. Each button is a hypertext reference to another web page that displays an identical UI (except for the text following “Robot Direction” which is updated to reflect, as one would expect, the robot’s direction). Whenever the client clicks on a button, it communicates to the ESP32 requesting information  for the referenced webpage. The client’s HTTP request includes a header text, specifying which file the client is looking for exactly. The ESP32 parses this header data, and depending on the requested web page, the main program will then set the robot to the associated state, and send the same web page information (except for updated “Robot Direction”) back to the client. Through interacting with buttons on the web page, users are thus able to control the robot through the ESP32’s parsing of HTTP requests. 
 
 
-### Autonomous Mode
+#### Autonomous Mode
 Our implementation of an autonomous mode was overall very simple. The robot would go forward for 25ms. If it then detected an object in front of it within a set threshold (10cm), it would then turn right for 50ms (approximately 90° on the carpet surface we tested on), and repeat. 
 
 Although this was not a complex autonomous mode, incorporating it into the rest of our project made us address some non trivial issues. Since our autonomous was inside an infinite while loop, it was impossible for our robot to remain in autonomous mode while also waiting for client requests from the user to see if they had pressed any buttons. Our solution was to use multithreading, with one thread carrying out web-page related instructions, with the other thread focusing on autonomous mode functionality. With multi-threading being a new concept to both of us, implementing multi-threading into our project was a fun and very rewarding part of the project, allowing us to have a core part of the original functionality that we had originally envisioned. 
@@ -62,6 +51,17 @@ Although this was not a complex autonomous mode, incorporating it into the rest 
 ![sonar picture](/images/sonar_picture.jpeg)
 
 Initial testing of distance sensor
+
+
+##### Bill of Materials
+  * Adafruit Huzzah32: $19.95
+  * US-100 Ultrasonic Distance Sensor: $6.95
+  * DC Motor + Stepper FeatherWing: $21.50
+  * DC Motor: $3.50 x 2 = $7.00
+  * Lithium Ion Polymer Battery 3.7v 1200m: $9.95
+  * 4 x AA Battery Holder: $2.95
+
+##### Total Project Cost: $68.30
 
 
 
