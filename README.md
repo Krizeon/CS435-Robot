@@ -49,7 +49,7 @@ Although this was not a complex autonomous mode, incorporating it into the rest 
 
 ![sonar picture](/images/sonar_picture.jpeg)
 
-##### Initial testing of distance sensor
+#### Initial testing of distance sensor
 
 ### Bill of Materials
 
@@ -64,8 +64,9 @@ Although this was not a complex autonomous mode, incorporating it into the rest 
 
 
 ## Results
-
+<p align="center">
 [![VIDEO](http://img.youtube.com/vi/MpUsSLf8D8k/0.jpg)](http://www.youtube.com/watch?v=MpUsSLf8D8k)
+</p>
 
 Demonstration Video
 
