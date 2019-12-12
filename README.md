@@ -4,9 +4,7 @@ By Kevin Hernandez and Dylan Montagu
 ![robot picture](/images/robot_picture.png)
 
 
-<p align="center">
 ## Introduction
-</p>  
 
 For our final project in our Embedded System's course, we were given the task of building a "hands-on, creative learning experience" - very much an open-ended assignment! The only restraint was that our project had to be unique (not copied directly from the web), and demonstrate the various skills and understandings of Embedded Systems we'd learned over the course of the semester. The tools at our disposal were the Adafruit Circuit Playground (an Arduino compatible microcontroller built on top of the ATmega32u4 Processor), the Adafruit HUZZAH32 (Arduino and MicroPython compatible microcontroller built on top of the ESP32 dual-core chip, with WiFi capabilities), as well as all the code we had written throughout the semester. 
 
@@ -14,9 +12,9 @@ We both agreed that we wanted to create some sort of wheeled robot - how could y
 
 In figuring out what hardware we would need to create this project, we explored many of the 'robot packages' sold on [Adafruit's website](https://learn.adafruit.com). As we were working on a budget, we had to determine what peripherals did we absolutely need to buy and what we could create on our own. We had figured that half the fun of creating a robot was building it, so we ultimately decided that non-electronic items such as a chassis were not necessary to buy! We started with knowledge on using certain design tools such as a laser cutter to cut out sheets of hardboard and wood for our robot parts, so we weren't too intimidated to design something simple from scratch.
 
-<p align="center">
+
+
 ## Methods/Planning 
-</p>  
 
 We began with writing out our project proposal and deciding how we wanted to build our ideal mini robot. On top of finding robot building guides on Adafruit and Sparkfun, Kevin also had prior robotics experience which he used in our advantage for designing a simple two wheel drive robot robot. A small, cheap robot the size of our hands could drive with a back-wheel drive with two free-spinning wheels in the front. When turning, our robot should turn in place by spinning the left and right motors in opposite directions while the front wheels (which should be a slippery material such as wood) slide across the ground. In order for this to work properly, the back wheels would need to have a higher friction surface such as rubber from a rubber band to be able to turn in place. As far as electronics go, we found out that the Feather HUZZAH board could not drive motors directly from the digital pins, so we would need a motor driver attachment to power the motors. We also needed some kind of distance sensor that would be attached to the front of the robot for autonomous driving capabilities. 
 
