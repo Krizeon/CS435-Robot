@@ -25,7 +25,7 @@ We used Adobe Illustrator to design the parts that were to be laser-cut and used
 As far as individual parts go, we only designed two of them from scratch on Adobe Illustrator. These parts are the two-inch wheels, motor hangers, and distance sensor cover. The motor hanger is designed to wrap around our blocky DC motor. The distance sensor cover is simply two circles spaced apart. The main chassis, battery pack supports, and axles were cut and glued using other woodshop tools.
   
 ![Wheel and wheel hanger design](/images/wheel.png)
-##### Wheel and wheel hanger design
+#### Wheel and wheel hanger design
 
 Since we were already stretching ourselves thin with various extra tasks in the process of making this project come to life, we decided to find existing Micropython libraries that could communicate with the Featherwing directly to drive the motors with ease. We found [this Micropython library](https://github.com/adafruit/micropython-adafruit-pca9685/) that was able to communicate with the Featherwing's onboard PCA9685 chip over 1^2C, a chip with PWM channels that is directly wired to the motor driving chips. We integrated the [pca9685.py](https://github.com/adafruit/micropython-adafruit-pca9685/blob/master/pca9685.py) and [motor.py](https://github.com/adafruit/micropython-adafruit-pca9685/blob/master/motor.py) files and modified them slightly to get them fully compatible with the ESP32's onboard libraries. This was mostly just changing the pca9685's use of the "time" library to "utime"  instead.
 
@@ -34,7 +34,7 @@ Once we got these files compatible and all wires were connected and soldered pro
 ### User Interface 
 ![Webpage Interface](/images/web_interface.png)
 
-##### Webpage user interface
+#### Webpage user interface
 
 One of the biggest goals for our project was to have a web interface to control our robot. We figured that this interactive user experience would make our robot much more enjoyable to play with, as opposed to pre-programming some sort of movement routine. Due to Middlebury College’s network restrictions, we were unable to implement the fully functional interface that we had originally envisioned (see the Future Work section), however our version gave us the base functionality that we had envisioned, and was a large part of the success of our robot. 
 
@@ -111,7 +111,7 @@ At the start of our project, we started out with only our Huzzah32, distance sen
 
 ![build image](/images/build_test.jpeg)
 
-##### Initial built testing of distance sensor, battery, and battery pack placement on robot
+#### Initial built testing of distance sensor, battery, and battery pack placement on robot
 
 ### Multithreading
 It was both of our first times working with multiple threads, and we encountered several problems along the way due to our original single-thread minded code not being structured to handle multiple threads. However, After playing around with the _thread library and getting some experience under our belts, we were able to resolve these issues. 
