@@ -106,7 +106,7 @@ Building the chassis and robot also took more time than anticipated. We went thr
 ### Missing Components
 At the start of our project, we started out with only our Huzzah32, distance sensor, stepper featherwing, and DC motors. Although we were able to get these parts communicating well within the first few weeks, we were restrained by the robot always needing to be connected to our computers as a power source. We quickly came to realize that without batteries, it would be hard to progress and fully test whether our physical components and actually code worked effectively when the robot was free roaming. 
 
-![build image](/images/build_image.jpeg)
+![build image](/images/build_test.jpeg)
 
 Initial built testing of battery and battery pack placement on robot
 
