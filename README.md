@@ -148,5 +148,5 @@ In the time frame provided, we were able to make what is (in our opinion) a very
   * https://www.sltrib.com/news/2019/08/19/yelling-siri-or-alexa/
 
 
-
+![robot_face](/images/robot_front.jpeg)
 
