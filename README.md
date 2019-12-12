@@ -45,7 +45,7 @@ The task division fell into place naturally: Kevin wanted to design and build th
 
 
 ### User Interface 
-![Webpage Interface](/web_interface.png)
+![Webpage Interface](/images/web_interface.png)
 
 One of the biggest goals for our project was to have a web interface to control our robot. We figured that this interactive user experience would make our robot much more enjoyable to play with, as opposed to pre-programming some sort of movement routine. Due to Middlebury College’s network restrictions, we were unable to implement the fully functional interface that we had originally envisioned (see the Future Work section), however our version gave us the base functionality that we had envisioned, and was a large part of the success of our robot. 
 
