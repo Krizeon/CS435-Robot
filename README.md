@@ -53,14 +53,14 @@ Although this was not a complex autonomous mode, incorporating it into the rest 
 Initial testing of distance sensor
 
 
-##### Bill of Materials
+#### Bill of Materials
+
   * Adafruit Huzzah32: $19.95
   * US-100 Ultrasonic Distance Sensor: $6.95
   * DC Motor + Stepper FeatherWing: $21.50
   * DC Motor: $3.50 x 2 = $7.00
   * Lithium Ion Polymer Battery 3.7v 1200m: $9.95
   * 4 x AA Battery Holder: $2.95
-
 ##### Total Project Cost: $68.30
 
 
