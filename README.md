@@ -108,7 +108,7 @@ At the start of our project, we started out with only our Huzzah32, distance sen
 
 ![build image](/images/build_test.jpeg)
 
-Initial built testing of battery and battery pack placement on robot
+Initial built testing of distance sensor, battery, and battery pack placement on robot
 
 ### Multithreading
 It was both of our first times working with multiple threads, and we encountered several problems along the way due to our original single-thread minded code not being structured to handle multiple threads. However, After playing around with the _thread library and getting some experience under our belts, we were able to resolve these issues. 
