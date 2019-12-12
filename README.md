@@ -12,7 +12,7 @@ We both agreed that we wanted to create some sort of wheeled robot - how could y
 
 In figuring out what hardware we would need to create this project, we explored many of the 'robot packages' sold on [Adafruit's website](https://learn.adafruit.com). As we were working on a budget, we had to determine what peripherals did we absolutely need to buy and what we could create on our own. We had figured that half the fun of creating a robot was building it, so we ultimately decided that non-electronic items such as a chassis were not necessary to buy! We started with knowledge on using certain design tools such as a laser cutter to cut out sheets of hardboard and wood for our robot parts, so we weren't too intimidated to design something simple from scratch.
 
-# Methods/Planning 
+## Methods/Planning 
 We began with writing out our project proposal and deciding how we wanted to build our ideal mini robot. On top of finding robot building guides on Adafruit and Sparkfun, Kevin also had prior robotics experience which he used in our advantage for designing a simple two wheel drive robot robot. A small, cheap robot the size of our hands could drive with a back-wheel drive with two free-spinning wheels in the front. When turning, our robot should turn in place by spinning the left and right motors in opposite directions while the front wheels (which should be a slippery material such as wood) slide across the ground. In order for this to work properly, the back wheels would need to have a higher friction surface such as rubber from a rubber band to be able to turn in place. As far as electronics go, we found out that the Feather HUZZAH board could not drive motors directly from the digital pins, so we would need a motor driver attachment to power the motors. We also needed some kind of distance sensor that would be attached to the front of the robot for autonomous driving capabilities. 
 
 Awesome! We planned out the ideas necessary to build a driving robot. So we set out to find the necessary parts on Adafruit's website, such as AA batteries, DC Servo motors (which Adafruit stated was ideal for small robots), LiPo battery packs, a Featherwing DC motor driver, and a distance sensor. We ordered these peripherals and set out to slowly figure out how to wire our robot together. There was lots of trial and error occuring when trying to connect the motors, but luckily no electronic was harmed in the process! During this process, we were designing and laser-cutting our robot parts, which were largely inspired by this chassis design:
@@ -61,7 +61,7 @@ Our implementation of an autonomous mode was overall very simple. The robot woul
 Although this was not a complex autonomous mode, incorporating it into the rest of our project made us address some non trivial issues. Since our autonomous was inside an infinite while loop, it was impossible for our robot to remain in autonomous mode while also waiting for client requests from the user to see if they had pressed any buttons. Our solution was to use multithreading, with one thread carrying out web-page related instructions, with the other thread focusing on autonomous mode functionality. With multi-threading being a new concept to both of us, implementing multi-threading into our project was a fun and very rewarding part of the project, allowing us to have a core part of the original functionality that we had originally envisioned. 
 
 
-# Results
+## Results
 
 [![VIDEO](http://img.youtube.com/vi/MpUsSLf8D8k/0.jpg)](http://www.youtube.com/watch?v=MpUsSLf8D8k)
 
@@ -71,7 +71,7 @@ As seen in this short video, our robot works! The first half of the video demons
 
 Although it would have been ideal for the video to have included a more thorough demonstration of all of the robot’s directions, as well as showing the interaction between the web page interface with the robot, this video allows us to see the multiple parts of our project properly communicate and work together. 
 
-# Schedule
+## Schedule
 
 Our original schedule was as follows:
 
@@ -92,7 +92,7 @@ Order more materials (Batteries!)
 
 Despite some hiccups, we had a good working schedule. We were able to complete the bulk of the robot and code in a timely manner. 
 
-# Issues Encountered
+## Issues Encountered
 Although we encountered a variety of issues during the building and coding of this robot, we were able to resolve most all of them to ultimately create a fully functional product. 
 
 ##### Libraries
@@ -108,10 +108,10 @@ At the start of our project, we started out with only our Huzzah32, distance sen
 It was both of our first times working with multiple threads, and we encountered several problems along the way due to our original single-thread minded code not being structured to handle multiple threads. However, After playing around with the _thread library and getting some experience under our belts, we were able to resolve these issues. 
 
 
-# Future Work
+## Future Work
 Overall, we're very happy with how our project turned out! It was a fantastic experience having to go through the research, trial, and troubleshooting phases of building an embedded system project. However, some aspects of our project that we'd like to improve are the autonomous mode, turning, user interface, and robot construction. 
 
-###Autonomous Mode
+### Autonomous Mode
 Our current implementation of autonomous mode is pretty simplistic - it boils down to "go forward, and turn right if an obstacle appears in front of the robot." This was adequate for our project, as the focus of this build wasn’t the autonomous mode, but rather the wholstic creation and implementation of an embedded system. As it was, our autonomous mode worked to ensure that our various peripherals (motors, distance sensor) were working correctly, and was fun to watch as it maneuvered throughout our classroom. However, creating a more thorough and robust autonomous would be the logical upgrade to our project. Having our robot able to make its way from point A to point B using various searching algorithms would be a fun project, especially now that we have a physical robot we can use to test with. This would likely require adding more sensors to our robot, as our current implementation with a single sensor will not register objects except those directly in front of it, causing it to occasionally run into objects it’s not perpendicular to. Utilizing 2 or 3 distance sensors would give us more information to work with when developing an autonomous mode program, and ultimately enhance the type of algorithms we could use. 
 
 In a similar vein of thought, another aspect of the autonomous mode that we’d like to improve is how the distance sensor readouts are used. Currently, the autonomous reads the distance from the distance sensor every 50ms. While this is adequate for the current speeds our robot moves at and the distance thresholds we’ve set, a more elegant solution would be to connect the sensor to an ISR or run it in a new thread. In a multithreading scenario, we would have the get_distance thread send a signal to the main thread, which would handle the signal by stopping the robot, maneuvering the robot to a position in which it would no longer crash, then hand the reins back to the default autonomous mode. This implementation could also be made useful in regular user-control modes, where the would automatically stop the robot if it ever thought it was about to crash, regardless of the user’s input. 
@@ -128,7 +128,7 @@ If we were to completely rework our UI, something that we would like to focus is
 In the time frame provided, we were able to make what is (in our opinion) a very sleek and well put together robot chassis. Kevin’s diligence on the laser cutter and soldering experience allowed us to have a very compact, yet functional final product. However, with more time on our hands, we would have likely decided to make more robust wheels with greater traction, a thicker distance sensor holder, and an encapsulating housing for our ESP32 and battery packs. 
 
 
-# References
+## References
   * https://www.geeksforgeeks.org/python-bytearray-function/
   * https://forum.micropython.org/viewtopic.php?t=762
   * https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2beta.html
