@@ -70,7 +70,7 @@ Although this was not a complex autonomous mode, incorporating it into the rest 
 
 [![VIDEO](http://img.youtube.com/vi/MpUsSLf8D8k/0.jpg)](http://www.youtube.com/watch?v=MpUsSLf8D8k)
 
-Demonstration Video
+#### Demonstration Video
 
 As seen in this short video, our robot works! The first half of the video demonstrates the robot’s autonomous mode as Dylan manually places his foot in front of the robot to force it to demonstrate its ability to avoid obstacles. Towards the end of the video, the robot is switched from autonomous mode to manual mode in which the user causes to robot to go forward, stop, then go backwards. 
 
