@@ -1,7 +1,7 @@
 # CS435 Embedded Systems Final Project: Two-wheel Drive WiFi Controlled Robot with Autonomous Capabilities
 By Kevin Hernandez and Dylan Montagu
 
-![robot picture](/robot_picture.png)
+![robot picture](/images/robot_picture.png)
 
 
 ## Introduction
@@ -24,7 +24,7 @@ We used Adobe Illustrator to design the parts that were to be laser-cut and used
 
 As far as individual parts go, we only designed two of them from scratch on Adobe Illustrator. These parts are the two-inch wheels, motor hangers, and distance sensor cover. The motor hanger is designed to wrap around our blocky DC motor. The distance sensor cover is simply two circles spaced apart. The main chassis, battery pack supports, and axles were cut and glued using other woodshop tools.
   
-![Wheel and wheel hanger design](/wheel.png)
+![Wheel and wheel hanger design](/images/wheel.png)
 Wheel and wheel hanger design.
 
 Since we were already stretching ourselves thin with various extra tasks in the process of making this project come to life, we decided to find existing Micropython libraries that could communicate with the Featherwing directly to drive the motors with ease. We found [this Micropython library](https://github.com/adafruit/micropython-adafruit-pca9685/) that was able to communicate with the Featherwing's onboard PCA9685 chip over 1^2C, a chip with PWM channels that is directly wired to the motor driving chips. We integrated the [pca9685.py](https://github.com/adafruit/micropython-adafruit-pca9685/blob/master/pca9685.py) and [motor.py](https://github.com/adafruit/micropython-adafruit-pca9685/blob/master/motor.py) files and modified them slightly to get them fully compatible with the ESP32's onboard libraries. This was mostly just changing the pca9685's use of the "time" library to "utime"  instead.
@@ -75,31 +75,20 @@ Although it would have been ideal for the video to have included a more thorough
 
 Our original schedule was as follows:
 
-Week 1:
-Order, receive, and put together robot parts/materials
-Week 2:
-Ensure proper communication between board and peripherals, create basic autonomous mode
-Week 3-4:
-Dylan: Create WiFi communication interface
-Kevin: Flesh out autonomous mode and create high quality chassis for robot 
-Week 5:
-Create final project webpage, general code debugging
+  * Week 1: Order, receive, and put together robot parts/materials
+  * Week 2: Ensure proper communication between board and peripherals, create basic autonomous mode
+  * Week 3-4: Dylan: Create WiFi communication interface; Kevin: Flesh out autonomous mode and create high quality chassis for robot 
+  * Week 5: Create final project webpage, general code debugging
 
 Our actual schedule ended up changing quite a bit due to parts not being delivered on time, among other issues. It resulted in the following:
 
-Week 1:
-Come up with project, figure out necessary parts
+  * Week 1: Come up with project, figure out necessary parts
 Dylan: Distance Sensor
 Kevin: Solder FeatherStepper to HUZZAH ESP32, DC motors
-Week 2-3:
-Dylan: User Interface (Website), Autonomous Mode
-Kevin: Build robot chassis, wheels using laser cutter
+  * Week 2-3: Dylan: User Interface (Website), Autonomous Mode; Kevin: Build robot chassis, wheels using laser cutter
 Order more materials (Batteries!)
-Week 4:
-Address remaining bugs
-Construct remaining robot parts needed (sensor holder)
-Week 5:
-Work on presentation, webpage
+  * Week 4: Address remaining bugs, construct remaining robot parts needed (sensor holder)
+  * Week 5: Work on presentation, webpage
 
 Despite some hiccups, we had a good working schedule. We were able to complete the bulk of the robot and code in a timely manner. 
 
