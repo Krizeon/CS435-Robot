@@ -3,6 +3,7 @@ By Kevin Hernandez and Dylan Montagu
 
 ![robot picture](/images/robot_picture.png)
 
+
 ## Introduction
 
 For our final project in our Embedded System's course, we were given the task of building a "hands-on, creative learning experience" - very much an open-ended assignment! The only restraint was that our project had to be unique (not copied directly from the web), and demonstrate the various skills and understandings of Embedded Systems we'd learned over the course of the semester. The tools at our disposal were the Adafruit Circuit Playground (an Arduino compatible microcontroller built on top of the ATmega32u4 Processor), the Adafruit HUZZAH32 (Arduino and MicroPython compatible microcontroller built on top of the ESP32 dual-core chip, with WiFi capabilities), as well as all the code we had written throughout the semester. 
@@ -32,7 +33,6 @@ Once we got these files compatible and all wires were connected and soldered pro
 
 The task division fell into place naturally: Kevin wanted to design and build the robot parts, Dylan wanted to implement a wifi-communication system with the ESP32 and design a website with buttons for controlling the device. 
 
-
 ### User Interface 
 ![Webpage Interface](/images/web_interface.png)
 
@@ -42,7 +42,6 @@ Inspiration for our WiFi UI was derived from [this example](http://acoptex.com/p
 
 In our [main.py file](https://github.com/Krizeon/CS435-Robot/blob/master/main.py), the primary program blocks while waiting for connections. Upon receiving a connection, it creates a socket to facilitate communication between the ESP32 and the client and sends raw HTML code (web interface) to the client. At this point, it’s important to give an overview of how our HTML code interfaced with the robot commands. As seen above, our web interface consists of multiple buttons designating different robot direction states. Each button is a hypertext reference to another web page that displays an identical UI (except for the text following “Robot Direction” which is updated to reflect, as one would expect, the robot’s direction). Whenever the client clicks on a button, it communicates to the ESP32 requesting information  for the referenced webpage. The client’s HTTP request includes a header text, specifying which file the client is looking for exactly. The ESP32 parses this header data, and depending on the requested web page, the main program will then set the robot to the associated state, and send the same web page information (except for updated “Robot Direction”) back to the client. Through interacting with buttons on the web page, users are thus able to control the robot through the ESP32’s parsing of HTTP requests. 
 
-
 ### Autonomous Mode
 Our implementation of an autonomous mode was overall very simple. The robot would go forward for 25ms. If it then detected an object in front of it within a set threshold (10cm), it would then turn right for 50ms (approximately 90° on the carpet surface we tested on), and repeat. 
 
@@ -51,7 +50,6 @@ Although this was not a complex autonomous mode, incorporating it into the rest 
 ![sonar picture](/images/sonar_picture.jpeg)
 
 Initial testing of distance sensor
-
 
 ### Bill of Materials
 
@@ -75,6 +73,8 @@ As seen in this short video, our robot works! The first half of the video demons
 
 Although it would have been ideal for the video to have included a more thorough demonstration of all of the robot’s directions, as well as showing the interaction between the web page interface with the robot, this video allows us to see the multiple parts of our project properly communicate and work together. 
 
+
+
 ## Schedule
 
 Our original schedule was as follows:
@@ -96,6 +96,8 @@ Order more materials (Batteries!)
 
 Despite some hiccups, we had a good working schedule. We were able to complete the bulk of the robot and code in a timely manner. 
 
+
+
 ## Issues Encountered
 Although we encountered a variety of issues during the building and coding of this robot, we were able to resolve most all of them to ultimately create a fully functional product. 
 
@@ -109,6 +111,7 @@ At the start of our project, we started out with only our Huzzah32, distance sen
 
 ### Multithreading
 It was both of our first times working with multiple threads, and we encountered several problems along the way due to our original single-thread minded code not being structured to handle multiple threads. However, After playing around with the _thread library and getting some experience under our belts, we were able to resolve these issues. 
+
 
 
 ## Future Work
@@ -129,6 +132,7 @@ If we were to completely rework our UI, something that we would like to focus is
 
 ### Robot Construction
 In the time frame provided, we were able to make what is (in our opinion) a very sleek and well put together robot chassis. Kevin’s diligence on the laser cutter and soldering experience allowed us to have a very compact, yet functional final product. However, with more time on our hands, we would have likely decided to make more robust wheels with greater traction, a thicker distance sensor holder, and an encapsulating housing for our ESP32 and battery packs. 
+
 
 
 ## References
