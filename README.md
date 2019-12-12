@@ -2,7 +2,6 @@
 By Kevin Hernandez and Dylan Montagu
 
 ![robot picture](/images/robot_picture.png)
-![temp](/images/sonar_picture.jpeg)
 
 ## Introduction
 
@@ -59,6 +58,11 @@ In our [main.py file](https://github.com/Krizeon/CS435-Robot/blob/master/main.py
 Our implementation of an autonomous mode was overall very simple. The robot would go forward for 25ms. If it then detected an object in front of it within a set threshold (10cm), it would then turn right for 50ms (approximately 90° on the carpet surface we tested on), and repeat. 
 
 Although this was not a complex autonomous mode, incorporating it into the rest of our project made us address some non trivial issues. Since our autonomous was inside an infinite while loop, it was impossible for our robot to remain in autonomous mode while also waiting for client requests from the user to see if they had pressed any buttons. Our solution was to use multithreading, with one thread carrying out web-page related instructions, with the other thread focusing on autonomous mode functionality. With multi-threading being a new concept to both of us, implementing multi-threading into our project was a fun and very rewarding part of the project, allowing us to have a core part of the original functionality that we had originally envisioned. 
+
+![sonar picture](/images/sonar_picture.jpeg)
+
+Initial testing of distance sensor
+
 
 
 ## Results
