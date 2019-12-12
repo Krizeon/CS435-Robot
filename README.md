@@ -106,6 +106,10 @@ Building the chassis and robot also took more time than anticipated. We went thr
 ### Missing Components
 At the start of our project, we started out with only our Huzzah32, distance sensor, stepper featherwing, and DC motors. Although we were able to get these parts communicating well within the first few weeks, we were restrained by the robot always needing to be connected to our computers as a power source. We quickly came to realize that without batteries, it would be hard to progress and fully test whether our physical components and actually code worked effectively when the robot was free roaming. 
 
+![build image](/images/build_image.jpeg)
+
+Initial built testing of battery and battery pack placement on robot
+
 ### Multithreading
 It was both of our first times working with multiple threads, and we encountered several problems along the way due to our original single-thread minded code not being structured to handle multiple threads. However, After playing around with the _thread library and getting some experience under our belts, we were able to resolve these issues. 
 
