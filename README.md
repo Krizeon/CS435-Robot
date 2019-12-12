@@ -2,7 +2,7 @@
 By Kevin Hernandez and Dylan Montagu
 
 ![robot picture](/images/robot_picture.png)
-
+![temp](/images/sonar_picture.jpeg)
 
 ## Introduction
 
