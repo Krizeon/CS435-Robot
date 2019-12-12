@@ -104,7 +104,7 @@ Many of the available libraries we found (for our peripherals such as DC Motors,
 Building the chassis and robot also took more time than anticipated. We went through several trial and errors to refine our designs for the laser cutter. We tried using chipboard, lumber, plywood, but eventually settled on hardboard for the wheels and thin plywood for the motor hangers. The construction of the support for the battery pack was done on the spot, and that took some experimenting with glue, toothpicks, and sheets of wood.
 
 ### Missing Components
-At the start of our project, we started out with only our Huzzah32, distance sensor, stepper featherwing, and DC motors. Although we were able to get these parts communicating well within the first few weeks, we were restrained by the robot always needing to be connected to our computers as a power source. We quickly came to realize that without batteries, it would be hard to progress and fully test whether our physical components and actually code worked effectively when the robot was free roaming. 
+At the start of our project, we started out with only our Huzzah32, distance sensor, stepper featherwing, and DC motors. Although we were able to get these parts communicating well within the first few weeks, we were restrained by the robot always needing to be connected to our computers as a power source. We quickly came to realize that without batteries, it would be hard to progress and fully test whether our physical components and actually code worked effectively when the robot was free roaming. And then once we did finally receive all the materials, the trick was figuring out how to place fit them onto the robot...
 
 ![build image](/images/build_test.jpeg)
 
