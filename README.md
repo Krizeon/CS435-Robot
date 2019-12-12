@@ -1,6 +1,8 @@
 # CS435 Embedded Systems Final Project: Two-wheel Drive WiFi Controlled Robot with Autonomous Capabilities
 By Kevin Hernandez and Dylan Montagu
 
+![robot picture](/IMG_2864.HEIC)
+
 
 ## Introduction
 
